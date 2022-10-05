@@ -1,11 +1,15 @@
 {
-  "name": "vanilla-nodejs-server",
+  "name": "pure-node",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "pure nodejs app",
+  "type": "module",
+  "main": "./server/index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node ./server/index.js"
   },
   "author": "Nicholas Otieno",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lowdb": "^3.0.0"
+  }
 }
