@@ -20,7 +20,7 @@ export function serveStatic(req, res) {
     if (error) {
       if (error.code === "ENOENT") {
         if (req.url.startsWith("/api")) {
-          return serveJson(req.url, res);
+          return serveJson(req, res);
         }
         fs.readFile(__dirname + "/../client/404.html", (error, content) => {
           res.writeHead(200, { "Content-Type": "text/html" });

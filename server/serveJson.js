@@ -12,7 +12,7 @@ const db = new Low(adapter);
 // Read data from JSON file,
 await db.read();
 
-export function serveJson(path, res) {
+export function serveJson(req, res) {
   res.writeHead(200, { "Content-Type": "application/json" });
   res.end(JSON.stringify(db.data));
 }
