@@ -1,18 +1,14 @@
-import { join, dirname } from "path";
-import { Low, JSONFile } from "lowdb";
-import { fileURLToPath } from "url";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-// Use JSON file for storage
-const file = join(__dirname, "data/db.json");
-const adapter = new JSONFile(file);
-const db = new Low(adapter);
-
-// Read data from JSON file,
-await db.read();
+import routes from "./routes.js";
 
 export function serveJson(req, res) {
-  res.writeHead(200, { "Content-Type": "application/json" });
-  res.end(JSON.stringify(db.data));
+  let key = req.method + req.url;
+  let parts = key.split("/");
+
+  if (parts.includes("GET") && parts.includes("user")) {
+    key = "GET/api/user";
+  }
+
+  const router = routes[key];
+
+  router ? router(req, res, parts) : res.end("NOT FOUND");
 }
