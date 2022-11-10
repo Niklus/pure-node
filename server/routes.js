@@ -19,7 +19,7 @@ const routes = {
     res.end(JSON.stringify(db.data));
   },
   
-  "GET/api/user": (req, res, parts) => {
+  "GET/api/users/id": (req, res, parts) => {
     const id = parts.at(-1);
     const user = db.data.find((user) => user.id === Number(id));
     if (user) {
