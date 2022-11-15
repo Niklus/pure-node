@@ -23,7 +23,7 @@ export function serveStatic(req, res) {
           return serveJson(req, res);
         }
         fs.readFile(__dirname + "/../client/404.html", (error, content) => {
-          res.writeHead(200, { "Content-Type": "text/html" });
+          res.writeHead(404, { "Content-Type": "text/html" });
           res.end(content, "utf8");
         });
       } else {
